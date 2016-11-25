@@ -14,9 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - R.swift (3.1.0):
-    - R.swift.Library (~> 3.0.2)
-  - R.swift.Library (3.0.2)
+  - R.swift (2.5.0):
+    - R.swift.Library (~> 2.3.0)
+  - R.swift.Library (2.3.0)
   - VimeoNetworking (0.0.1):
     - AFNetworking (= 3.1.0)
     - VimeoNetworking/Model (= 0.0.1)
@@ -26,7 +26,7 @@ PODS:
     - VimeoNetworking (= 0.0.1)
 
 DEPENDENCIES:
-  - R.swift
+  - R.swift (~> 2.5)
   - VimeoNetworking (from `https://github.com/vimeo/VimeoNetworking.git`, branch `master`)
   - VimeoUpload (from `https://github.com/vimeo/VimeoUpload.git`, branch `master`)
 
@@ -48,11 +48,11 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
-  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  R.swift: 01b9966e8dbe587a11ca2f65a1834dac2fa7b247
+  R.swift.Library: 75df6abfd22492c852136c4d7b6a9ca21664772a
   VimeoNetworking: dac22e43aff60cfbc8cb93af745196bf9856604d
   VimeoUpload: 55590f5f65eae67473b261221bf6c3f89eacb268
 
-PODFILE CHECKSUM: b9a7d148580df9508e17ce5bf3fc2a8fe45fd2bb
+PODFILE CHECKSUM: afdd81ba21b048006793851dd91e3b117a7d99b8
 
 COCOAPODS: 1.1.1
