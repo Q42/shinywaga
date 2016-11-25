@@ -16,11 +16,11 @@ class VideoRecordViewController: UIViewController {
   var cameraController: UIImagePickerController?
 
   @IBAction func recordTouched(sender: AnyObject) {
-    startCameraFromViewController(self, withDelegate: self)
+    startCameraFromViewController(viewController: self, withDelegate: self)
   }
 
-  func startCameraFromViewController(viewController: UIViewController, withDelegate delegate: protocol<UINavigationControllerDelegate, UIImagePickerControllerDelegate>) -> Void {
-    if UIImagePickerController.isSourceTypeAvailable(.Camera) == false {
+  func startCameraFromViewController(viewController: UIViewController, withDelegate delegate: UINavigationControllerDelegate & UIImagePickerControllerDelegate) -> Void {
+    if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
       // TODO
     }
 
@@ -29,16 +29,16 @@ class VideoRecordViewController: UIViewController {
 
     self.cameraController = UIImagePickerController()
     if let cc = self.cameraController {
-      cc.sourceType = .Camera
+      cc.sourceType = .camera
       cc.mediaTypes = [kUTTypeMovie as NSString as String]
       cc.allowsEditing = false
       cc.delegate = delegate
-      cc.videoQuality = .TypeHigh
+      cc.videoQuality = .typeHigh
       cc.showsCameraControls = false
       cc.cameraOverlayView = UIView(frame: self.view.frame)
       cc.view.addGestureRecognizer(gestureRecognizer)
 
-      presentViewController(cc, animated: true, completion: {
+      present(cc, animated: true, completion: {
         let success = cc.startVideoCapture()
         print("Start video succeeded \(success)")
       })
@@ -51,9 +51,9 @@ class VideoRecordViewController: UIViewController {
     }
   }
 
-  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     if let cc = self.cameraController {
-      cc.dismissViewControllerAnimated(false, completion: nil)
+      cc.dismiss(animated: false, completion: nil)
 
       let mediaType = info[UIImagePickerControllerMediaType] as! String
 
