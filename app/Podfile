@@ -7,4 +7,6 @@ target 'app' do
 
   # Pods for app
   pod 'R.swift'
+  pod 'VimeoNetworking', :git => 'https://github.com/vimeo/VimeoNetworking.git', :branch => 'master' 
+  pod 'VimeoUpload', :git => 'https://github.com/vimeo/VimeoUpload.git', :branch => 'master'
 end

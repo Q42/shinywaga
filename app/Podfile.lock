@@ -1,15 +1,58 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - VimeoNetworking (0.0.1):
+    - AFNetworking (= 3.1.0)
+    - VimeoNetworking/Model (= 0.0.1)
+  - VimeoNetworking/Model (0.0.1):
+    - AFNetworking (= 3.1.0)
+  - VimeoUpload (0.9.1):
+    - VimeoNetworking (= 0.0.1)
 
 DEPENDENCIES:
   - R.swift
+  - VimeoNetworking (from `https://github.com/vimeo/VimeoNetworking.git`, branch `master`)
+  - VimeoUpload (from `https://github.com/vimeo/VimeoUpload.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  VimeoNetworking:
+    :branch: master
+    :git: https://github.com/vimeo/VimeoNetworking.git
+  VimeoUpload:
+    :branch: master
+    :git: https://github.com/vimeo/VimeoUpload.git
+
+CHECKOUT OPTIONS:
+  VimeoNetworking:
+    :commit: 293ce95893b20acb52c3b9e643c5d38c9c0ab989
+    :git: https://github.com/vimeo/VimeoNetworking.git
+  VimeoUpload:
+    :commit: 664e401ce6468eea87b704ddb85f0cf084e96717
+    :git: https://github.com/vimeo/VimeoUpload.git
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  VimeoNetworking: dac22e43aff60cfbc8cb93af745196bf9856604d
+  VimeoUpload: 55590f5f65eae67473b261221bf6c3f89eacb268
 
-PODFILE CHECKSUM: acb0ff8d8e1b3dc72b03233eda2d3babec87880a
+PODFILE CHECKSUM: b9a7d148580df9508e17ce5bf3fc2a8fe45fd2bb
 
 COCOAPODS: 1.1.1
