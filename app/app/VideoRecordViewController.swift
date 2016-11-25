@@ -8,6 +8,7 @@
 
 import MobileCoreServices
 import UIKit
+import AmazonS3RequestManager
 
 class VideoRecordViewController: UIViewController {
 
@@ -15,7 +16,7 @@ class VideoRecordViewController: UIViewController {
 
   var cameraController: UIImagePickerController?
 
-  @IBAction func recordTouched(sender: AnyObject) {
+  @IBAction func recordTouched(_ sender: Any) {
     startCameraFromViewController(viewController: self, withDelegate: self)
   }
 
@@ -51,7 +52,7 @@ class VideoRecordViewController: UIViewController {
     }
   }
 
-  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     if let cc = self.cameraController {
       cc.dismiss(animated: false, completion: nil)
 
@@ -60,8 +61,18 @@ class VideoRecordViewController: UIViewController {
       if mediaType == kUTTypeMovie as NSString as String
       {
         let videoPath = info[UIImagePickerControllerMediaURL] as! NSURL
-        UISaveVideoAtPathToSavedPhotosAlbum(videoPath.path!, nil, nil, nil)
+        uploadVideo(videoURL: videoPath as URL)
       }
+    }
+  }
+
+  func uploadVideo(videoURL: URL) {
+    let amazonS3Manager = AmazonS3RequestManager(bucket: "shinywagavideos",
+                                                 region: .EUWest1,
+                                                 accessKey: "AKIAIUYBDN7G3LBZZ2SA",
+                                                 secret: "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")
+    amazonS3Manager.upload(from: videoURL, to: "video.mp4").response { res in
+      print("Upload succeeded")
     }
   }
 }
