@@ -9,6 +9,8 @@
 import MobileCoreServices
 import UIKit
 import CoreLocation
+import CoreBluetooth
+import Firebase
 
 typealias Timestamp = Double
 typealias Degree = Double
@@ -69,6 +71,31 @@ class VideoRecordViewController: UIViewController {
   let gestureRecognizer = UITapGestureRecognizer()
 
   var cameraController: UIImagePickerController!
+
+  var isRemote: Bool { return UIDevice.current.name == "Tom's iPhone 7" }
+
+  // Bluetooths
+  var centralManager: CBCentralManager!
+  var peripheral: CBPeripheral?
+  var peripheralID: UUID?
+
+  // Firebases
+  var dbRef: FIRDatabaseReference!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    if isRemote {
+      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(32), execute: {
+
+        self.performSegue(withIdentifier: "remoteControl", sender: self)
+      })
+    }
+    else {
+      centralManager = CBCentralManager(delegate: self, queue: nil)
+      startFirebase()
+    }
+  }
 
   @IBAction func recordTouched(_ sender: Any) {
     startCameraFromViewController(viewController: self, withDelegate: self)

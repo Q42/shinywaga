@@ -8,4 +8,6 @@ target 'app' do
   # Pods for app
   pod 'R.swift'
   pod 'AmazonS3RequestManager'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 end
