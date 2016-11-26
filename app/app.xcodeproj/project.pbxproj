@@ -8,19 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		5B5732E61DE8371A00B57F98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5732E51DE8371A00B57F98 /* AppDelegate.swift */; };
-		5B5732E81DE8371A00B57F98 /* CompassRecorder+Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5732E71DE8371A00B57F98 /* CompassRecorder+Bluetooth.swift */; };
+		5B5732E81DE8371A00B57F98 /* VideoRecordViewController+Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5732E71DE8371A00B57F98 /* VideoRecordViewController+Bluetooth.swift */; };
 		5B5732EB1DE8371A00B57F98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B5732E91DE8371A00B57F98 /* Main.storyboard */; };
 		5B5732ED1DE8371A00B57F98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B5732EC1DE8371A00B57F98 /* Assets.xcassets */; };
 		5B5732F01DE8371A00B57F98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B5732EE1DE8371A00B57F98 /* LaunchScreen.storyboard */; };
 		5B5732F81DE83F6B00B57F98 /* VideoRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5732F71DE83F6B00B57F98 /* VideoRecordViewController.swift */; };
 		5B5733011DE8475100B57F98 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5733001DE8475100B57F98 /* R.generated.swift */; };
 		D647C93901C223229597AD23 /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5BC1AF8A5926E871FC6B67 /* Pods_app.framework */; };
+		E2A08B2D1DE98623001CDCC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2A08B2C1DE98623001CDCC9 /* GoogleService-Info.plist */; };
+		E2A08B2F1DE986E8001CDCC9 /* VideoRecordViewController+Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08B2E1DE986E8001CDCC9 /* VideoRecordViewController+Remote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5B5732E21DE8371A00B57F98 /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B5732E51DE8371A00B57F98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B5732E71DE8371A00B57F98 /* CompassRecorder+Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompassRecorder+Bluetooth.swift"; sourceTree = "<group>"; };
+		5B5732E71DE8371A00B57F98 /* VideoRecordViewController+Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoRecordViewController+Bluetooth.swift"; sourceTree = "<group>"; };
 		5B5732EA1DE8371A00B57F98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B5732EC1DE8371A00B57F98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B5732EF1DE8371A00B57F98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +32,8 @@
 		6C1578021101A8DAB3A7C6FE /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
 		98569065B6FB581585B320A1 /* Pods-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.debug.xcconfig"; sourceTree = "<group>"; };
 		AA5BC1AF8A5926E871FC6B67 /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2A08B2C1DE98623001CDCC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E2A08B2E1DE986E8001CDCC9 /* VideoRecordViewController+Remote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VideoRecordViewController+Remote.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,14 +77,16 @@
 		5B5732E41DE8371A00B57F98 /* app */ = {
 			isa = PBXGroup;
 			children = (
-				5B5733001DE8475100B57F98 /* R.generated.swift */,
 				5B5732E51DE8371A00B57F98 /* AppDelegate.swift */,
-				5B5732E71DE8371A00B57F98 /* CompassRecorder+Bluetooth.swift */,
-				5B5732E91DE8371A00B57F98 /* Main.storyboard */,
 				5B5732EC1DE8371A00B57F98 /* Assets.xcassets */,
-				5B5732EE1DE8371A00B57F98 /* LaunchScreen.storyboard */,
+				E2A08B2C1DE98623001CDCC9 /* GoogleService-Info.plist */,
 				5B5732F11DE8371A00B57F98 /* Info.plist */,
+				5B5732EE1DE8371A00B57F98 /* LaunchScreen.storyboard */,
+				5B5732E91DE8371A00B57F98 /* Main.storyboard */,
+				5B5733001DE8475100B57F98 /* R.generated.swift */,
 				5B5732F71DE83F6B00B57F98 /* VideoRecordViewController.swift */,
+				5B5732E71DE8371A00B57F98 /* VideoRecordViewController+Bluetooth.swift */,
+				E2A08B2E1DE986E8001CDCC9 /* VideoRecordViewController+Remote.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -159,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B5732F01DE8371A00B57F98 /* LaunchScreen.storyboard in Resources */,
+				E2A08B2D1DE98623001CDCC9 /* GoogleService-Info.plist in Resources */,
 				5B5732ED1DE8371A00B57F98 /* Assets.xcassets in Resources */,
 				5B5732EB1DE8371A00B57F98 /* Main.storyboard in Resources */,
 			);
@@ -232,7 +239,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B5732E81DE8371A00B57F98 /* CompassRecorder+Bluetooth.swift in Sources */,
+				5B5732E81DE8371A00B57F98 /* VideoRecordViewController+Bluetooth.swift in Sources */,
+				E2A08B2F1DE986E8001CDCC9 /* VideoRecordViewController+Remote.swift in Sources */,
 				5B5733011DE8475100B57F98 /* R.generated.swift in Sources */,
 				5B5732E61DE8371A00B57F98 /* AppDelegate.swift in Sources */,
 				5B5732F81DE83F6B00B57F98 /* VideoRecordViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  VideoRecordViewController+Bluetooth.swift
 //  app
 //
 //  Created by Jaap Mengers on 25-11-16.
@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreBluetooth
-
-
 
 
 extension VideoRecordViewController : CBCentralManagerDelegate {

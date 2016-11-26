@@ -11,6 +11,7 @@ import UIKit
 import AmazonS3RequestManager
 import CoreLocation
 import CoreBluetooth
+import Firebase
 
 public extension Sequence {
   func categorise<U : Hashable>(_ key: (Iterator.Element) -> U) -> [U:[Iterator.Element]] {
@@ -97,10 +98,14 @@ class VideoRecordViewController: UIViewController {
   var peripheral: CBPeripheral?
   var peripheralID: UUID?
 
+  // Firebases
+  var dbRef: FIRDatabaseReference!
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
     centralManager = CBCentralManager(delegate: self, queue: nil)
+    startFirebase()
   }
 
   @IBAction func recordTouched(_ sender: Any) {
