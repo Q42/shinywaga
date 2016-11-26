@@ -10,6 +10,7 @@ import MobileCoreServices
 import UIKit
 import AmazonS3RequestManager
 import CoreLocation
+import CoreBluetooth
 
 public extension Sequence {
   func categorise<U : Hashable>(_ key: (Iterator.Element) -> U) -> [U:[Iterator.Element]] {
@@ -90,6 +91,17 @@ class VideoRecordViewController: UIViewController {
   let gestureRecognizer = UITapGestureRecognizer()
 
   var cameraController: UIImagePickerController!
+
+  // Bluetooths
+  var centralManager: CBCentralManager!
+  var peripheral: CBPeripheral?
+  var peripheralID: UUID?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    centralManager = CBCentralManager(delegate: self, queue: nil)
+  }
 
   @IBAction func recordTouched(_ sender: Any) {
     startCameraFromViewController(viewController: self, withDelegate: self)
