@@ -8,7 +8,6 @@
 
 import MobileCoreServices
 import UIKit
-import AmazonS3RequestManager
 import CoreLocation
 
 typealias Timestamp = Double
@@ -124,28 +123,14 @@ class VideoRecordViewController: UIViewController {
 
         UISaveVideoAtPathToSavedPhotosAlbum(videoPath.path!, nil, nil, nil)
 
-        uploadVideo(videopath: videoPath)
-      }
-    }
-  }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let uploadViewController = storyboard.instantiateViewController(withIdentifier: "uploadViewController") as? UploadViewController
 
-  func uploadVideo(videopath: NSURL) {
-    let amazonS3Manager = AmazonS3RequestManager(bucket: "shinywagavideos",
-                                                 region: .EUWest1,
-                                                 accessKey: "AKIAIUYBDN7G3LBZZ2SA",
-                                                 secret: "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")
-    let epoch = Int(NSDate().timeIntervalSince1970)
-
-    amazonS3Manager.upload(from: videopath as URL, to: "\(epoch).mp4").response { res in
-      if let err = res.error {
-        print(err.localizedDescription)
-        let av = UIAlertController(title: "snor", message: "\(err.localizedDescription)", preferredStyle: .alert)
-        av.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(av, animated: false)
-      } else {
-        let av = UIAlertController(title: "snor", message: "Gelukt", preferredStyle: .alert)
-        av.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(av, animated: false)
+        if let vc = uploadViewController {
+          present(vc, animated: true, completion: {
+            vc.uploadVideo(videopath: videoPath)
+          })
+        }
       }
     }
   }

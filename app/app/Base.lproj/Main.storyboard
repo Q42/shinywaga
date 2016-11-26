@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,6 +39,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Upload View Controller-->
+        <scene sceneID="F8s-rm-lcx">
+            <objects>
+                <viewController storyboardIdentifier="uploadViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yhK-zY-cyi" customClass="UploadViewController" customModule="app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EWH-ZH-PDY"/>
+                        <viewControllerLayoutGuide type="bottom" id="bKw-TA-2ON"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Ea-8P-Wsa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="31v-KV-Bxr">
+                                <rect key="frame" x="36" y="332" width="303" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="31v-KV-Bxr" firstAttribute="centerY" secondItem="3Ea-8P-Wsa" secondAttribute="centerY" id="eUA-1E-QXV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="31v-KV-Bxr" secondAttribute="trailing" constant="20" id="oZU-zA-cHI"/>
+                            <constraint firstItem="31v-KV-Bxr" firstAttribute="leading" secondItem="3Ea-8P-Wsa" secondAttribute="leadingMargin" constant="20" id="wkD-Ba-fem"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressView" destination="31v-KV-Bxr" id="skU-Zb-ZIK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJq-7M-B9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="862" y="27"/>
         </scene>
     </scenes>
 </document>

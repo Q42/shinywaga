@@ -78,7 +78,7 @@ struct R: Rswift.Validatable {
   
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
-      // There are no resources to validate
+      try _R.validate()
     }
     
     fileprivate init() {}
@@ -87,12 +87,20 @@ struct R: Rswift.Validatable {
   fileprivate init() {}
 }
 
-struct _R {
+struct _R: Rswift.Validatable {
+  static func validate() throws {
+    try storyboard.validate()
+  }
+  
   struct nib {
     fileprivate init() {}
   }
   
-  struct storyboard {
+  struct storyboard: Rswift.Validatable {
+    static func validate() throws {
+      try main.validate()
+    }
+    
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
       typealias InitialController = UIKit.UIViewController
       
@@ -102,11 +110,20 @@ struct _R {
       fileprivate init() {}
     }
     
-    struct main: Rswift.StoryboardResourceWithInitialControllerType {
+    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = VideoRecordViewController
       
       let bundle = R.hostingBundle
       let name = "Main"
+      let uploadViewController = StoryboardViewControllerResource<UploadViewController>(identifier: "uploadViewController")
+      
+      func uploadViewController(_: Void = ()) -> UploadViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: uploadViewController)
+      }
+      
+      static func validate() throws {
+        if _R.storyboard.main().uploadViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'uploadViewController' could not be loaded from storyboard 'Main' as 'UploadViewController'.") }
+      }
       
       fileprivate init() {}
     }
