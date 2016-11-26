@@ -9,8 +9,11 @@
 import UIKit
 import CoreBluetooth
 
+private let serviceId = CBUUID(string: "00110011-4242-4242-4242-42424242EEFF")
+//private let characteristicId = CBUU"0x4242"
 
 extension VideoRecordViewController : CBCentralManagerDelegate {
+
   func centralManagerDidUpdateState(_ central: CBCentralManager) {
     print("[\(Date())] CentralManager did update state: \(CBManagerState(rawValue: central.state.rawValue))")
 
@@ -64,10 +67,20 @@ extension VideoRecordViewController : CBPeripheralDelegate {
     print("[\(Date())] Peripheral did discover characteristics:")
 
     for characteristic in service.characteristics ?? [] {
+
       print(" - \(characteristic)")
 
+      let data = Data.init(bytes: [0x09])
+
+      let type: CBCharacteristicWriteType = characteristic.properties.contains(.writeWithoutResponse)
+        ? .withoutResponse
+        : .withResponse
+
+
+      print("WRITE \(data)")
+      peripheral.writeValue(data, for: characteristic, type: type)
 //      self.characteristic = characteristic
-      peripheral.setNotifyValue(true, for: characteristic)
+//      peripheral.setNotifyValue(true, for: characteristic)
     }
   }
 //

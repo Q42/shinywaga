@@ -55,8 +55,23 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 0 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
   struct segue {
+    /// This struct is generated for `VideoRecordViewController`, and contains static references to 1 segues.
+    struct videoRecordViewController {
+      /// Segue identifier `remoteControl`.
+      static let remoteControl: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, VideoRecordViewController, RemoteViewController> = Rswift.StoryboardSegueIdentifier(identifier: "remoteControl")
+      
+      /// Optionally returns a typed version of segue `remoteControl`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func remoteControl(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, VideoRecordViewController, RemoteViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.videoRecordViewController.remoteControl, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   
@@ -87,7 +102,7 @@ struct R: Rswift.Validatable {
   
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
-      // There are no resources to validate
+      try _R.validate()
     }
     
     fileprivate init() {}
@@ -96,12 +111,20 @@ struct R: Rswift.Validatable {
   fileprivate init() {}
 }
 
-struct _R {
+struct _R: Rswift.Validatable {
+  static func validate() throws {
+    try storyboard.validate()
+  }
+  
   struct nib {
     fileprivate init() {}
   }
   
-  struct storyboard {
+  struct storyboard: Rswift.Validatable {
+    static func validate() throws {
+      try main.validate()
+    }
+    
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
       typealias InitialController = UIKit.UIViewController
       
@@ -111,11 +134,20 @@ struct _R {
       fileprivate init() {}
     }
     
-    struct main: Rswift.StoryboardResourceWithInitialControllerType {
+    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = VideoRecordViewController
       
       let bundle = R.hostingBundle
       let name = "Main"
+      let remoteControl = StoryboardViewControllerResource<RemoteViewController>(identifier: "remoteControl")
+      
+      func remoteControl(_: Void = ()) -> RemoteViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: remoteControl)
+      }
+      
+      static func validate() throws {
+        if _R.storyboard.main().remoteControl() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'remoteControl' could not be loaded from storyboard 'Main' as 'RemoteViewController'.") }
+      }
       
       fileprivate init() {}
     }

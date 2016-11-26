@@ -93,6 +93,8 @@ class VideoRecordViewController: UIViewController {
 
   var cameraController: UIImagePickerController!
 
+  var isRemote: Bool { return UIDevice.current.name == "Tom's iPhone 7" }
+
   // Bluetooths
   var centralManager: CBCentralManager!
   var peripheral: CBPeripheral?
@@ -104,8 +106,16 @@ class VideoRecordViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    centralManager = CBCentralManager(delegate: self, queue: nil)
-    startFirebase()
+    if isRemote {
+      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(32), execute: {
+
+        self.performSegue(withIdentifier: "remoteControl", sender: self)
+      })
+    }
+    else {
+      centralManager = CBCentralManager(delegate: self, queue: nil)
+//      startFirebase()
+    }
   }
 
   @IBAction func recordTouched(_ sender: Any) {
