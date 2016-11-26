@@ -28,6 +28,7 @@ class CompassRecorder: NSObject, CLLocationManagerDelegate {
   }
 
   var onCompletedHandler: () -> Void = { }
+  var hasFirstValue: () -> Void = { }
 
   static func startRecording(onRoundCompletedHandler: @escaping () -> Void) -> CompassRecorder {
     let recorder = CompassRecorder()
@@ -51,6 +52,10 @@ class CompassRecorder: NSObject, CLLocationManagerDelegate {
 
   func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
     recordings.append(NSDate().timeIntervalSince(startTime), newHeading.trueHeading)
+
+    if(recordings.count == 1){
+      hasFirstValue()
+    }
 
     if checkIfRoundIsFinished() {
       onCompletedHandler()
@@ -94,14 +99,19 @@ class VideoRecordViewController: UIViewController {
     self.cameraController = cc
 
     present(cc, animated: true, completion: {
-      let success = cc.startVideoCapture()
+      print("Initialized")
       sleep(2)
+      print("Start getting compass")
       self.compassRecorder = CompassRecorder.startRecording {
         cc.stopVideoCapture()
       }
 
+      self.compassRecorder?.hasFirstValue = {
+        print("We have compass, start recording")
+        let success = cc.startVideoCapture()
+      }
+
       self.startDate = NSDate()
-      print("Start video succeeded \(success)")
     })
   }
 
