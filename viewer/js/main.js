@@ -74,13 +74,31 @@ Animations = {
   }
 }
 
-function linear() {
-  vid.play();
+function linear(index) {
+  const playButton = document.getElementsByClassName('play-button')[index];
+  playButton.classList.add('active');
+  const body = document.getElementsByTagName('body')[0];
+  body.classList.add('active');
+
+  if (index == 0) {
+    vid1.load();
+    vid1.play();
+  }
+  if (index == 1) {
+    vid2.load();
+    vid2.play();
+  }
 }
 
 function animateWithEasing() {
+  const playButton = document.getElementsByClassName('play-button')[1];
+  playButton.classList.add('active');
+  const body = document.getElementsByTagName('body')[0];
+  body.classList.add('active');
+
+
   Animations.easeInOutQuint(5000, (percentage) => {
-    vid.currentTime = percentage * time;
+    vid2.currentTime = percentage * time;
   });
 }
 
@@ -95,12 +113,17 @@ function preloadVideo(url) {
    if (this.status === 200) {
     var videoBlob = this.response;
     var vidSrc = URL.createObjectURL(videoBlob);
-    vid.src = vidSrc;
+    vid1.src = vidSrc;
+    vid2.src = vidSrc;
 
     // Assume "video" is the video node
     var i = setInterval(function() {
-      if(vid.readyState > 0) {
-        time = vid.duration;
+      if(vid1.readyState > 0) {
+        time = vid1.duration;
+        clearInterval(i);
+      }
+      if(vid2.readyState > 0) {
+        time = vid2.duration;
         clearInterval(i);
       }
     }, 200);
@@ -110,10 +133,18 @@ function preloadVideo(url) {
   req.send();
 }
 
-var vid;
+var vid1, vid2;
 
 window.onload = () => {
-  vid = document.getElementById('v0');
+  vid1 = document.getElementById('v0');
+  vid2 = document.getElementById('v1');
+  vid1.onended = onEnd
+  vid2.onended = onEnd
+}
+
+function onEnd() {
+  const body = document.getElementsByTagName('body')[0];
+  body.classList.remove('active');
 }
 
 // Initialize Firebase

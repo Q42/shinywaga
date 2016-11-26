@@ -14,7 +14,6 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/font-awesome.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
     </head>
@@ -27,15 +26,24 @@
 
         <!-- Add your site or application content here -->
         <div class="video-wrapper">
-          <video id="v0" preload width="800">
+          <video id="v0" preload width="800" muted>
           </video>
-          <button onclick="linear()">
-            <i class="fa fa-play-circle play-button fa-5" aria-hidden="true"></i>
+          <button onclick="linear(0)">
+            <i class="fa fa-play-circle fa-5 play-button" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Add your site or application content here -->
+        <div class="video-wrapper">
+          <video id="v1" preload width="800">
+          </video>
+          <button onclick="animateWithEasing(1)">
+            <i class="fa fa-play-circle fa-5 play-button" aria-hidden="true"></i>
           </button>
         </div>
 
         <br/>
-        <button onclick="linear()">Animeer</button> <button onclick="animateWithEasing()">Animeer met easing</button>
+        <!-- <button onclick="linear()">Animeer</button> <button onclick="animateWithEasing()">Animeer met easing</button> -->
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>

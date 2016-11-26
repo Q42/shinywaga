@@ -281,17 +281,67 @@ textarea {
     }
 }
 
+body {
+  background: #fff;
+  transition: background 1s ease;
+}
+
+body.active {
+  background-color: #000
+}
 
 
 h1 {
   text-align: center;
   font-size: 64px;
   font-family: 'Pacifico', cursive;
+  transition: color 1s ease;
+  color: black;
 }
 
-video {
+body.active h1, body.active h2 {
+  color: white;
+}
+
+.video-wrapper {
   margin: 0 auto;
   display: block;
   width: 750px;
   max-width: 95%;
+  position: relative;
+}
+
+.video-wrapper + .video-wrapper {
+  margin-top: 250px;
+  margin-bottom: 250px;
+}
+
+.video-wrapper video {
+  width: 750px;
+  border-radius: 25px;
+}
+
+.video-wrapper button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  font-size: 100px;
+  outline: none;
+}
+
+.video-wrapper button i {
+  text-align: center;
+  opacity: 1;
+  transition: 0.3s ease opacity;
+  color: white;
+}
+
+.video-wrapper button i.active {
+  opacity: 0;
 }
