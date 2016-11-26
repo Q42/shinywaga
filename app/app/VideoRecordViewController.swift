@@ -114,7 +114,7 @@ class VideoRecordViewController: UIViewController {
     }
     else {
       centralManager = CBCentralManager(delegate: self, queue: nil)
-//      startFirebase()
+      startFirebase()
     }
   }
 

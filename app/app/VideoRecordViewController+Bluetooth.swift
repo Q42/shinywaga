@@ -64,7 +64,7 @@ extension VideoRecordViewController : CBPeripheralDelegate {
   }
 
   func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-    print("[\(Date())] Peripheral did discover characteristics:")
+    print("[\(Date())] Peripheral did discover characteristics for peripheral \(peripheral.name):")
 
     for characteristic in service.characteristics ?? [] {
 

@@ -70,6 +70,14 @@
                                     <action selector="setGreen:" destination="4fy-SW-vKY" eventType="touchUpInside" id="gL5-rz-FU4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqf-s0-8EO">
+                                <rect key="frame" x="21" y="44" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="white"/>
+                                <connections>
+                                    <action selector="setWhite:" destination="4fy-SW-vKY" eventType="touchUpInside" id="ryg-dU-Tqm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

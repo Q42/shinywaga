@@ -26,4 +26,8 @@ class RemoteViewController : UIViewController {
   @IBAction func setGreen(_ sender: Any) {
     self.dbRef.child("commands/color").setValue("green")
   }
+
+  @IBAction func setWhite(_ sender: Any) {
+    self.dbRef.child("commands/color").setValue("white")
+  }
 }
