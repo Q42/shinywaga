@@ -7,11 +7,16 @@
 //
 import UIKit
 import AmazonS3RequestManager
+import Firebase
 
 class UploadViewController: UIViewController {
   @IBOutlet weak var progressView: UIProgressView!
 
+  var dbRef: FIRDatabaseReference!
+
   override func viewDidLoad() {
+    super.viewDidLoad()
+    dbRef = FIRDatabase.database().reference()
     progressView.setProgress(0, animated: false)
   }
 
@@ -31,10 +36,13 @@ class UploadViewController: UIViewController {
     upload.response { res in
       if let err = res.error {
         print(err.localizedDescription)
-        let av = UIAlertController(title: "snor", message: "\(err.localizedDescription)", preferredStyle: .alert)
+        let av = UIAlertController(title: "Fout", message: "\(err.localizedDescription)", preferredStyle: .alert)
         av.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(av, animated: false)
       } else {
+
+        self.dbRef.child("commands/lastfile").setValue("https://s3-eu-west-1.amazonaws.com/shinywagavideos/\(epoch).mp4")
+
         let av = UIAlertController(title: "Gelukt", message: "Gelukt \(res.response?.statusCode)", preferredStyle: .alert)
         av.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(av, animated: false)
