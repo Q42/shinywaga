@@ -75,7 +75,7 @@ Animations = {
 }
 
 function linear() {
-  const playButton = document.getElementsByClassName('play-button')[index];
+  const playButton = document.getElementsByClassName('play-button')[0];
   playButton.classList.add('active');
   const body = document.getElementsByTagName('body')[0];
   body.classList.add('active');
