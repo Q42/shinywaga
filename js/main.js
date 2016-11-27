@@ -74,20 +74,14 @@ Animations = {
   }
 }
 
-function linear(index) {
+function linear() {
   const playButton = document.getElementsByClassName('play-button')[index];
   playButton.classList.add('active');
   const body = document.getElementsByTagName('body')[0];
   body.classList.add('active');
 
-  if (index == 0) {
-    vid1.load();
-    vid1.play();
-  }
-  if (index == 1) {
-    vid2.load();
-    vid2.play();
-  }
+  vid.load();
+  vid.play();
 }
 
 function animateWithEasing() {
@@ -98,7 +92,7 @@ function animateWithEasing() {
 
 
   Animations.easeInOutQuint(5000, (percentage) => {
-    vid2.currentTime = percentage * time;
+    vid.currentTime = percentage * time;
   });
 }
 
@@ -112,18 +106,13 @@ function preloadVideo(url) {
   req.onload = function() {
    if (this.status === 200) {
     var videoBlob = this.response;
-    var vidSrc = URL.createObjectURL(videoBlob);
-    vid1.src = vidSrc;
-    vid2.src = vidSrc;
+    var vidSrc = 'https://s3-eu-west-1.amazonaws.com/shinywagavideos/1480179553.mp4';
+    vid.src = vidSrc;
 
     // Assume "video" is the video node
     var i = setInterval(function() {
-      if(vid1.readyState > 0) {
-        time = vid1.duration;
-        clearInterval(i);
-      }
-      if(vid2.readyState > 0) {
-        time = vid2.duration;
+      if(vid.readyState > 0) {
+        time = vid.duration;
         clearInterval(i);
       }
     }, 200);
@@ -133,13 +122,11 @@ function preloadVideo(url) {
   req.send();
 }
 
-var vid1, vid2;
+var vid, vid;
 
 window.onload = () => {
-  vid1 = document.getElementById('v0');
-  vid2 = document.getElementById('v1');
-  vid1.onended = onEnd
-  vid2.onended = onEnd
+  vid = document.getElementById('v0');
+  vid.onended = onEnd
 }
 
 function onEnd() {
@@ -156,8 +143,3 @@ var config = {
   messagingSenderId: "70833487694"
 };
 firebase.initializeApp(config);
-
-var starCountRef = firebase.database().ref('commands/lastfile');
-starCountRef.on('value', function(snapshot) {
-  preloadVideo(snapshot.val());
-});
